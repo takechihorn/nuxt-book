@@ -9,6 +9,11 @@
       "UnauthRoleName": "amplify-nuxtbook-dev-173121-unauthRole",
       "StackName": "amplify-nuxtbook-dev-173121",
       "StackId": "arn:aws:cloudformation:ap-northeast-1:213330998827:stack/amplify-nuxtbook-dev-173121/44189340-36d4-11eb-a4d2-0a62df4444de"
+    },
+    "categories": {
+      "auth": {
+        "nuxtbook228f0cd9": {}
+      }
     }
   }
 }

@@ -1,1 +1,10 @@
-{}
+{
+  "auth": {
+    "nuxtbook228f0cd9": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
