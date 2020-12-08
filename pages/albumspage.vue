@@ -34,7 +34,7 @@ export default {
   data: () => ({ albumName: "", error: "" }),
   methods: {
     openAlbumDetail(album) {
-      this.$store.push(`/album/${album.id}`);
+      this.$router.push(`/album/${album.id}`);
     },
     async createAlbum() {
       this.error = "";

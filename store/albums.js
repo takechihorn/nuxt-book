@@ -77,6 +77,25 @@ export const actions = {
         bucket
       }
     }
+    try {
+      await Storage.push(key, file, {
+        level: "protected",
+        contentType: "mimeType",
+        metadata: {
+          albumId: id,
+          photoId
+        }
+      })
+      await API.graphql(
+        graphqlOperation(createPhotoMutation, {
+          input: inputData
+        })
+      )
+      return Promise.resolve("success")
+    } catch (error) {
+      console.log("createPhoto error", error)
+      return Promise.reject(error)
+    }
   }
 }
 export const getters = {
