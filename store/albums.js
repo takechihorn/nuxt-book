@@ -11,7 +11,11 @@ import {
 import {
   listAlbums as listAlbumsQuery
 } from "@/graphql/queries"
-
+import {
+  createPhoto as createPhotoMutation
+} from "@/graphql/mutations";
+import uuid from "uuidv4"
+import awsconfig from "@/aws-exports"
 
 
 export const state = () => ({
@@ -49,6 +53,30 @@ export const actions = {
   }) {
     const albumsData = await API.graphql(graphqlOperation(listAlbumsQuery))
     commit("setAlbums", albumsData.data.listAlbums.items)
+  },
+  async createPhoto(_, data) {
+    const {
+      aws_user_files_s3_bucket_region: region,
+      aws_user_files_s3_bucket: bucket
+    } = awsconfig;
+    const {
+      file,
+      type: mimeType,
+      id
+    } = data;
+    const extension = file.name.substr(file.name.lastIndexOf(".") + 1)
+    const photoId = uuid()
+    const key = `images/${photoId}.${extension}`;
+    const inputData = {
+      id: photoId,
+      photoAlbumId: id,
+      contentType: mimeType,
+      fullsize: {
+        key,
+        region,
+        bucket
+      }
+    }
   }
 }
 export const getters = {

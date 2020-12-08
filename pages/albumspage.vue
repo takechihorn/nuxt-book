@@ -15,7 +15,7 @@
     <h5 class="mt-4 text-2xl">List Of Albums</h5>
     <div class="flex flex-wrap w-full m-auto justify-center">
       <div
-        v-for="(album, idx) in albums.albums"
+        v-for="(album, idx) in this.$store.getters['albums/albums']"
         :key="idx"
         class="cursor-pointer mt-4 ml-4 w-3/12 h-24 shadow-xl flex items-center justify-center"
         @click="openAlbumDetail(album)"
@@ -47,10 +47,6 @@ export default {
         owner: this.$auth.id,
         ownerId: this.$auth.email
       };
-      console.log(this.albumName);
-      console.log(this.$auth.id);
-      console.log(this.$auth.email);
-      console.log(albums.albums);
       this.$store.dispatch("albums/createAlbum", newAlbum);
     }
   }
