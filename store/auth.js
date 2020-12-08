@@ -60,3 +60,7 @@ export const actions = {
     commit('set', null)
   }
 }
+
+export const getters = {
+  user: (state) => state.user
+}

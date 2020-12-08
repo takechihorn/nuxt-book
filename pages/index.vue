@@ -14,11 +14,11 @@
         <button @click="$store.dispatch('auth/logout')" class="button--gray">
           Logout
         </button>
-        <nuxt-link to="/posts/create" class="button--green"
+        <nuxt-link to="/albumspage" class="button--green"
           >Create Post</nuxt-link
         >
       </div>
-      <div v-for="post in posts" :key="post.id" class="py-6">
+      <!-- <div v-for="post in posts" :key="post.id" class="py-6">
         <h4 class="text-lg font-semibold">
           <nuxt-link :to="`/posts/${post.id}`">{{ post.title }}</nuxt-link>
         </h4>
@@ -32,7 +32,7 @@
             Delete
           </button>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -41,13 +41,13 @@
 export default {
   async asyncData({ store }) {
     return {
-      posts: await store.dispatch("api/listPosts")
+      posts: await store.dispatch("albums/listPosts")
     };
   },
   methods: {
     async deletePost(id) {
-      await this.$store.dispatch("api/deletePost", id);
-      this.posts = await this.$store.dispatch("api/listPosts");
+      await this.$store.dispatch("albums/deletePost", id);
+      this.posts = await this.$store.dispatch("albums/listPosts");
     }
   }
 };
