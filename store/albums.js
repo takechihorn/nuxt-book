@@ -76,11 +76,14 @@ export const actions = {
         region,
         bucket
       }
+      
     }
+
+    //s3 bucket storage add file to it
     try {
-      await Storage.push(key, file, {
+      await Storage.put(key, file, {
         level: "protected",
-        contentType: "mimeType",
+        contentType: mimeType,
         metadata: {
           albumId: id,
           photoId

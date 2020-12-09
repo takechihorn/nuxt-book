@@ -35,10 +35,10 @@
       >
         <amplify-s3-image
           level="protected"
-          :img-key="photo.thumbnail ? photo.thumbnail.key : photo.fullsize.key"
+          :img-key="photo.fullsize.key"
           class="w-4/12"
         ></amplify-s3-image>
-        <div v-if="photo.createdAt && photo.gps">
+        <!-- <div v-if="photo.createdAt && photo.gps">
           <ul>
             <li>Created At {{ photo.createdAt }}</li>
             <li>
@@ -47,7 +47,7 @@
             </li>
             <li>longitude At {{ photo.gps.longitude }}</li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -57,6 +57,7 @@
 export default {
   mounted() {
     this.getPhotos();
+    // this.$store.dispatch("albums/getAlbumsData");
   },
   props: ["id"],
   data: () => ({
@@ -73,6 +74,7 @@ export default {
           file: file.target.files[0],
           id: this.id
         });
+        console.log(file.target.files[0]), console.log(this.id);
         this.getPhotos();
       } catch (error) {
         console.log("error create photo", error);
