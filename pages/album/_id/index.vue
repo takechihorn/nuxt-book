@@ -57,9 +57,11 @@
 export default {
   mounted() {
     this.getPhotos();
-    // this.$store.dispatch("albums/getAlbumsData");
+    console.log(this.$route.params["id"]);
+
+    // this.$store.dispatch("albums/getAlbum", this.id);
+    // console.log(this.$store.dispatch("albums/getAlbum"));
   },
-  props: ["id"],
   data: () => ({
     photos: [],
     albumName: ""
@@ -72,7 +74,7 @@ export default {
       try {
         await this.$store.dispatch("albums/createPhoto", {
           file: file.target.files[0],
-          id: this.id
+          id: this.$route.params["id"]
         });
         console.log(file.target.files[0]), console.log(this.id);
         this.getPhotos();
@@ -81,11 +83,15 @@ export default {
       }
     },
     async getPhotos() {
-      const album = await this.$store.dispatch("albums/getAlbum", this.id);
+      const album = await this.$store.dispatch(
+        "albums/getAlbum",
+        this.$route.params["id"]
+      );
       this.photos = album.data.getAlbum.photos.items;
       this.albumName = album.data.getAlbum.name;
     }
   },
+
   comuted: {
     id() {
       return this.$route.params.id;

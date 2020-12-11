@@ -9,6 +9,6 @@
     "amplify/backend/awscloudformation": true,
     "git.ignoreLimitWarning": true,
     "terminal.integrated.fontFamily": "Source Code Pro for Powerline",
-    "terminal.integrated.fontSize": 12
+    "terminal.integrated.fontSize": 14
   }
 }

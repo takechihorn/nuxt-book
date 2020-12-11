@@ -14,9 +14,7 @@
         <button @click="$store.dispatch('auth/logout')" class="button--gray">
           Logout
         </button>
-        <nuxt-link to="/albumspage" class="button--green"
-          >Create Post</nuxt-link
-        >
+        <nuxt-link to="/albums" class="button--green">Create Post</nuxt-link>
       </div>
       <!-- <div v-for="post in posts" :key="post.id" class="py-6">
         <h4 class="text-lg font-semibold">

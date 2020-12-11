@@ -76,7 +76,7 @@ export const actions = {
         region,
         bucket
       }
-      
+
     }
 
     //s3 bucket storage add file to it
