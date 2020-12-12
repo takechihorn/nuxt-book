@@ -35,10 +35,10 @@
       >
         <amplify-s3-image
           level="protected"
-          :img-key="photo.fullsize.key"
+          :img-key="photo.thumnail ? photo.thumnail.key : photo.fullsize.key"
           class="w-4/12"
-        ></amplify-s3-image>
-        <!-- <div v-if="photo.createdAt && photo.gps">
+        />
+        <div v-if="photo.createdAt && photo.gps">
           <ul>
             <li>Created At {{ photo.createdAt }}</li>
             <li>
@@ -47,7 +47,7 @@
             </li>
             <li>longitude At {{ photo.gps.longitude }}</li>
           </ul>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>

@@ -14,8 +14,13 @@ import {
 import {
   createPhoto as createPhotoMutation
 } from "@/graphql/mutations";
-import uuid from "uuidv4"
+import {
+  v4 as uuid_v4
+} from "uuid";
 import awsconfig from "@/aws-exports"
+import {
+  Storage
+} from 'aws-amplify';
 
 
 export const state = () => ({
@@ -64,8 +69,8 @@ export const actions = {
       type: mimeType,
       id
     } = data;
-    const extension = file.name.substr(file.name.lastIndexOf(".") + 1)
-    const photoId = uuid()
+    const extension = file.name.substring(file.name.lastIndexOf(".") + 1)
+    const photoId = uuid_v4()
     const key = `images/${photoId}.${extension}`;
     const inputData = {
       id: photoId,
@@ -78,7 +83,8 @@ export const actions = {
       }
 
     }
-
+    console.log(file.name.substring(file.name.lastIndexOf(".") + 1))
+    console.log(photoId)
     //s3 bucket storage add file to it
     try {
       await Storage.put(key, file, {
