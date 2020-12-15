@@ -33,6 +33,7 @@
           />
           <button type="submit" class="btn btn--green">Confirm</button>
         </form>
+        <div class="text-red-600">{{ this.error.message }}</div>
         <nuxt-link to="/login">Have an account? Login</nuxt-link>
       </div>
       <div>
@@ -48,12 +49,16 @@ const steps = {
   confirm: "CONFIRM"
 };
 export default {
+  mounted() {
+    console.log(this.error.message);
+  },
   data: () => ({
     steps: { ...steps },
     step: steps.register,
     registerForm: {
       email: "",
-      password: ""
+      password: "",
+      errors: []
     },
     confirmForm: {
       email: "",

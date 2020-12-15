@@ -1,8 +1,10 @@
 <template>
   <div>
+    <Nav />
     <Nuxt />
   </div>
 </template>
+
 
 <style>
 html {

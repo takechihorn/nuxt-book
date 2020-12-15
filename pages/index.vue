@@ -36,19 +36,22 @@
 </template>
 
 <script>
-// export default {
-//   async asyncData({ store }) {
-//     return {
-//       posts: await store.dispatch("albums/listPosts")
-//     };
-//   },
-//   methods: {
-//     async deletePost(id) {
-//       await this.$store.dispatch("albums/deletePost", id);
-//       this.posts = await this.$store.dispatch("albums/listPosts");
-//     }
-//   }
-// };
+export default {
+  molunted() {
+    console.log(this.$store.getters["auth/user"]);
+  }
+  // async asyncData({ store }) {
+  //   return {
+  //     posts: await store.dispatch("albums/listPosts")
+  //   };
+  // },
+  // methods: {
+  //   async deletePost(id) {
+  //     await this.$store.dispatch("albums/deletePost", id);
+  //     this.posts = await this.$store.dispatch("albums/listPosts");
+  //   }
+  // }
+};
 </script>
 
 <style>
