@@ -33,11 +33,8 @@
           />
           <button type="submit" class="btn btn--green">Confirm</button>
         </form>
-        <div class="text-red-600">{{ this.error.message }}</div>
+        <div class="text-red-600">{{ this.error }}</div>
         <nuxt-link to="/login">Have an account? Login</nuxt-link>
-      </div>
-      <div>
-        You're logged in - go you!
       </div>
     </div>
   </div>
@@ -50,7 +47,7 @@ const steps = {
 };
 export default {
   mounted() {
-    console.log(this.error.message);
+    console.log(this.error);
   },
   data: () => ({
     steps: { ...steps },

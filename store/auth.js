@@ -36,7 +36,7 @@ export const actions = {
       password: password
     })
     return user
-  },
+  }, 
   async confirmRegistration(_, {
     email,
     code
